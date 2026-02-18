@@ -44,8 +44,7 @@ jobs:
         env:
           # Set the base path for GitHub Pages
           # GitHub Pages serves at: https://<username>.github.io/<repo-name>/
-          # Change 'todo_local-first_pwa' to match your repository name
-          VITE_BASE_PATH: /todo_local-first_pwa/
+          VITE_BASE_PATH: /kellermeister/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
