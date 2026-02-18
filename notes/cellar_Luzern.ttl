@@ -1,0 +1,5 @@
+@prefix schema: <https://schema.org/> .
+
+<https://schema.org/room/Luzern>
+    a schema:Room ;
+    schema:name "Luzern" .
