@@ -5,32 +5,6 @@ import { nodePolyfills } from 'vite-plugin-node-polyfills';
 import litCss from 'vite-plugin-lit-css';
 import dotenv from '@dotenvx/dotenvx';
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-import { replaceVariablesSync } from '@inventage/envsubst';
-
-interface Dict<T> {
-  [key: string]: T | undefined;
-}
-
-function filterVarsByPrefix(vars: Dict<string>, prefix: string = 'FRONTEND_') {
-  return Object.fromEntries(Object.entries(vars).filter(([key]) => key.startsWith(prefix)));
-}
-
-function replaceIndexEnvVars(vars: Dict<string> = process.env): Plugin {
-  return {
-    name: 'replace-index-html-env-vars',
-    apply: 'serve', // only in dev
-    enforce: 'pre', // run before others
-    transformIndexHtml(html) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call
-      const [replaced] = replaceVariablesSync(html, filterVarsByPrefix(vars));
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-      return replaced;
-    },
-  };
-}
-
 // https://vitejs.dev/config/
 // noinspection JSUnusedGlobalSymbols
 export default defineConfig(({ command }) => {
@@ -39,6 +13,9 @@ export default defineConfig(({ command }) => {
   }
 
   return {
+    // Set base path for GitHub Pages deployment
+    // Use '/' for local development, '/repo-name/' for GitHub Pages
+    base: process.env.VITE_BASE_PATH || '/',
     server: {
       host: '0.0.0.0',
     },
@@ -52,7 +29,6 @@ export default defineConfig(({ command }) => {
       'import.meta.env.SHOW_DOMAIN_NOTICE': process.env.FRONTEND_SHOW_DOMAIN_NOTICE && JSON.stringify(process.env.FRONTEND_SHOW_DOMAIN_NOTICE),
     },
     plugins: [
-      replaceIndexEnvVars(),
       litCss({
         exclude: ['./styles.css', './styles.scss'],
       }),
