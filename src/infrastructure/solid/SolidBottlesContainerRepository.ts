@@ -10,7 +10,7 @@ export class SolidBottlesContainerRepository implements BottlesContainerReposito
     private bottlesUrl: string;
 
     constructor(storageUrl: URL) {
-        this.bottlesUrl = storageUrl.toString() + 'private/kellermeister/bottles/bottles.ttl';
+        this.bottlesUrl = storageUrl.toString() + 'private/kellermeister/bottles/bottles#it';
     }
 
     async fetchBottlesContainer(): Promise<BottlesContainer | null> {
