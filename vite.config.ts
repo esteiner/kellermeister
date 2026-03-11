@@ -8,6 +8,7 @@ export default defineConfig({
   plugins: [
     // https://vite-pwa-org.netlify.app/guide/
     VitePWA ({
+      selfDestroying: true,
       registerType: 'autoUpdate',
       injectRegister: null,
       includeAssets: ['favicon.ico'],
