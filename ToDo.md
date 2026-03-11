@@ -4,7 +4,7 @@ ToDo
 - [x] Namen optimieren
 - [ ] Inventar optimieren
 - [ ] Foto-to-Order
-- [ ] Inrupt Setup
+- [x] Inrupt Setup
 - [ ] Flaschen suchen auf Kellerarbeit, Keller und Einkäufe (ein Suchfeld auf: Name, Jahrgang, Weinart, Land, Region, Traubensorte, Alkoholgehalt, Trinkfenster-Bis)
 
 ### Prio 1

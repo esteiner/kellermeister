@@ -13,14 +13,22 @@ export class SolidBottlesContainerRepository implements BottlesContainerReposito
         this.bottlesUrl = storageUrl.toString() + 'private/kellermeister/bottles/bottles#it';
     }
 
-    async fetchBottlesContainer(): Promise<BottlesContainer | null> {
+    async fetchBottles(): Promise<BottlesContainer | null> {
         const bottlesContainer: BottlesContainer | null = await BottlesContainer.find(this.bottlesUrl);
         if (bottlesContainer) {
             return bottlesContainer;
         } else {
             console.log("fetchBottlesContainer: not found");
-            return null;
+            return await this.createBottles();
         }
     }
 
+    async createBottles(): Promise<BottlesContainer> {
+        console.log("createBottles");
+        var bottles = new BottlesContainer({
+            url: this.bottlesUrl,
+            name: 'Bottles'
+        });
+        return bottles.save();
+    }
 }
