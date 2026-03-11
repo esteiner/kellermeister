@@ -29,22 +29,6 @@ export default defineConfig({
           },
         ],
       },
-      workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
-        runtimeCaching: [
-          {
-            urlPattern: /^https:\/\/.+\/.well-known\/solid/,
-            handler: 'NetworkFirst',
-            options: {
-              cacheName: 'Kellermeister',
-              expiration: {
-                maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24, // 24 hours
-              },
-            },
-          },
-        ],
-      },
     }),
   ],
   test: {
