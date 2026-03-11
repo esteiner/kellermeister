@@ -6,8 +6,10 @@ export default defineConfig({
   // Use '/' for local development, '/repo-name/' for GitHub Pages
   base: process.env.VITE_BASE_PATH || '/',
   plugins: [
-    VitePWA({
+    // https://vite-pwa-org.netlify.app/guide/
+    VitePWA ({
       registerType: 'autoUpdate',
+      injectRegister: null,
       includeAssets: ['favicon.ico'],
       manifest: {
         name: 'Kellermeister',
